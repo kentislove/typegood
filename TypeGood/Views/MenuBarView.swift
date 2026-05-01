@@ -14,7 +14,7 @@ struct MenuBarView: View {
                 Text("TypeGood")
                     .font(.headline)
                 Spacer()
-                Text("v1.1.1")
+                Text("v1.1.2")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

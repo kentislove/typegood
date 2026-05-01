@@ -6,6 +6,10 @@ final class VocabularyStore {
     static let shared = VocabularyStore()
 
     private let fileManager = FileManager.default
+    private let defaults = UserDefaults.standard
+    private let bundledVocabularyVersionKey = "com.typegood.bundledVocabularyVersion"
+    private static let bundledVocabularyVersion = 2
+
     var library: VocabularyLibrary
 
     private var storageURL: URL {
@@ -19,6 +23,7 @@ final class VocabularyStore {
         if let data = try? Data(contentsOf: VocabularyStore.defaultStorageURL()),
            let decoded = try? JSONDecoder().decode(VocabularyLibrary.self, from: data) {
             self.library = decoded
+            migrateBundledVocabularyIfNeeded()
         } else {
             self.library = VocabularyLibrary()
             loadDefaultVocabulary()
@@ -33,12 +38,47 @@ final class VocabularyStore {
 
     /// 載入內建預設詞彙
     private func loadDefaultVocabulary() {
-        if let url = Bundle.main.url(forResource: "default_vocabulary", withExtension: "json"),
-           let data = try? Data(contentsOf: url),
-           let decoded = try? JSONDecoder().decode([VocabularyEntry].self, from: data) {
+        if let decoded = loadBundledVocabularyEntries() {
             library.entries = decoded
+            library.lastModified = Date()
+            save()
+            defaults.set(Self.bundledVocabularyVersion, forKey: bundledVocabularyVersionKey)
+        }
+    }
+
+    /// 將舊版內建詞彙遷移為新版預設，避免舊的大小寫修正規則長期殘留。
+    private func migrateBundledVocabularyIfNeeded() {
+        let storedVersion = defaults.integer(forKey: bundledVocabularyVersionKey)
+        guard storedVersion < Self.bundledVocabularyVersion,
+              let bundledEntries = loadBundledVocabularyEntries() else { return }
+
+        if storedVersion < 2 {
+            let oldDefaultIDs = Set((1...12).compactMap {
+                UUID(uuidString: String(format: "00000000-0000-0000-0000-%012d", $0))
+            })
+            library.entries.removeAll { oldDefaultIDs.contains($0.id) }
+        }
+
+        let existingIDs = Set(library.entries.map(\.id))
+        let existingPairs = Set(library.entries.map { "\($0.source)\u{1F}\($0.target)" })
+        let newEntries = bundledEntries.filter { entry in
+            !existingIDs.contains(entry.id) &&
+            !existingPairs.contains("\(entry.source)\u{1F}\(entry.target)")
+        }
+
+        if !newEntries.isEmpty {
+            library.entries.append(contentsOf: newEntries)
+            library.lastModified = Date()
             save()
         }
+
+        defaults.set(Self.bundledVocabularyVersion, forKey: bundledVocabularyVersionKey)
+    }
+
+    private func loadBundledVocabularyEntries() -> [VocabularyEntry]? {
+        guard let url = Bundle.main.url(forResource: "default_vocabulary", withExtension: "json"),
+              let data = try? Data(contentsOf: url) else { return nil }
+        return try? JSONDecoder().decode([VocabularyEntry].self, from: data)
     }
 
     func save() {
@@ -47,6 +87,11 @@ final class VocabularyStore {
         if let data = try? encoder.encode(library) {
             try? data.write(to: storageURL, options: .atomic)
         }
+    }
+
+    func resetToDefaultVocabulary() {
+        library = VocabularyLibrary()
+        loadDefaultVocabulary()
     }
 
     func add(source: String, target: String, note: String = "") {

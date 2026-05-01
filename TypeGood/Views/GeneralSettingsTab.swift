@@ -82,7 +82,7 @@ struct GeneralSettingsTab: View {
                 HStack {
                     Text("版本")
                     Spacer()
-                    Text("1.1.1")
+                    Text("1.1.2")
                         .foregroundStyle(.secondary)
                 }
                 HStack {

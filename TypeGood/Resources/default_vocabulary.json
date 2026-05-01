@@ -1,86 +1,219 @@
 [
     {
-        "id": "00000000-0000-0000-0000-000000000001",
-        "source": "Iphone",
-        "target": "iPhone",
+        "id": "10000000-0000-0000-0000-000000000001",
+        "source": "skil",
+        "target": "Skill",
         "isEnabled": true,
-        "note": "品牌名稱大小寫修正"
+        "note": "LLM / Agent 工作術語"
     },
     {
-        "id": "00000000-0000-0000-0000-000000000002",
-        "source": "iphone",
-        "target": "iPhone",
+        "id": "10000000-0000-0000-0000-000000000002",
+        "source": "skilll",
+        "target": "Skill",
         "isEnabled": true,
-        "note": "品牌名稱大小寫修正"
+        "note": "LLM / Agent 工作術語"
     },
     {
-        "id": "00000000-0000-0000-0000-000000000003",
-        "source": "Macbook",
-        "target": "MacBook",
+        "id": "10000000-0000-0000-0000-000000000003",
+        "source": "Codexx",
+        "target": "Codex",
         "isEnabled": true,
-        "note": "品牌名稱大小寫修正"
+        "note": "模型工作工具名稱"
     },
     {
-        "id": "00000000-0000-0000-0000-000000000004",
-        "source": "macbook",
-        "target": "MacBook",
+        "id": "10000000-0000-0000-0000-000000000004",
+        "source": "Code X",
+        "target": "Codex",
         "isEnabled": true,
-        "note": "品牌名稱大小寫修正"
+        "note": "模型工作工具名稱"
     },
     {
-        "id": "00000000-0000-0000-0000-000000000005",
-        "source": "Typescript",
+        "id": "10000000-0000-0000-0000-000000000005",
+        "source": "克勞德",
+        "target": "Claude",
+        "isEnabled": true,
+        "note": "模型名稱"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000007",
+        "source": "Chat GPT",
+        "target": "ChatGPT",
+        "isEnabled": true,
+        "note": "模型名稱"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000008",
+        "source": "Open AI",
+        "target": "OpenAI",
+        "isEnabled": true,
+        "note": "AI 供應商名稱"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000009",
+        "source": "Anthropicc",
+        "target": "Anthropic",
+        "isEnabled": true,
+        "note": "AI 供應商名稱"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000010",
+        "source": "安索ropic",
+        "target": "Anthropic",
+        "isEnabled": true,
+        "note": "AI 供應商名稱"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000011",
+        "source": "Whisperr",
+        "target": "Whisper",
+        "isEnabled": true,
+        "note": "語音辨識模型名稱"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000013",
+        "source": "M C P",
+        "target": "MCP",
+        "isEnabled": true,
+        "note": "Agent 工具協定"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000014",
+        "source": "too call",
+        "target": "tool call",
+        "isEnabled": true,
+        "note": "LLM / Agent 工作術語"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000015",
+        "source": "function colling",
+        "target": "function calling",
+        "isEnabled": true,
+        "note": "LLM / Agent 工作術語"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000016",
+        "source": "promptt",
+        "target": "prompt",
+        "isEnabled": true,
+        "note": "LLM 工作術語"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000017",
+        "source": "system prom",
+        "target": "system prompt",
+        "isEnabled": true,
+        "note": "LLM 工作術語"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000018",
+        "source": "context windows",
+        "target": "context window",
+        "isEnabled": true,
+        "note": "LLM 工作術語"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000019",
+        "source": "embeddingg",
+        "target": "embedding",
+        "isEnabled": true,
+        "note": "LLM / RAG 工作術語"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000020",
+        "source": "R A G",
+        "target": "RAG",
+        "isEnabled": true,
+        "note": "LLM / RAG 工作術語"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000021",
+        "source": "vector database",
+        "target": "vector DB",
+        "isEnabled": true,
+        "note": "LLM / RAG 工作術語"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000022",
+        "source": "Type script",
         "target": "TypeScript",
         "isEnabled": true,
-        "note": "技術術語大小寫修正"
+        "note": "Web coding 技術術語"
     },
     {
-        "id": "00000000-0000-0000-0000-000000000006",
-        "source": "Javascript",
+        "id": "10000000-0000-0000-0000-000000000023",
+        "source": "Java script",
         "target": "JavaScript",
         "isEnabled": true,
-        "note": "技術術語大小寫修正"
+        "note": "Web coding 技術術語"
     },
     {
-        "id": "00000000-0000-0000-0000-000000000007",
-        "source": "Github",
-        "target": "GitHub",
+        "id": "10000000-0000-0000-0000-000000000024",
+        "source": "Next JS",
+        "target": "Next.js",
         "isEnabled": true,
-        "note": "品牌名稱大小寫修正"
+        "note": "Web coding 框架名稱"
     },
     {
-        "id": "00000000-0000-0000-0000-000000000008",
-        "source": "Vscode",
-        "target": "VSCode",
+        "id": "10000000-0000-0000-0000-000000000025",
+        "source": "Next J S",
+        "target": "Next.js",
         "isEnabled": true,
-        "note": "品牌名稱大小寫修正"
+        "note": "Web coding 框架名稱"
     },
     {
-        "id": "00000000-0000-0000-0000-000000000009",
-        "source": "macos",
-        "target": "macOS",
+        "id": "10000000-0000-0000-0000-000000000026",
+        "source": "Node JS",
+        "target": "Node.js",
         "isEnabled": true,
-        "note": "品牌名稱大小寫修正"
+        "note": "Web coding runtime 名稱"
     },
     {
-        "id": "00000000-0000-0000-0000-000000000010",
-        "source": "Macos",
-        "target": "macOS",
+        "id": "10000000-0000-0000-0000-000000000027",
+        "source": "Node J S",
+        "target": "Node.js",
         "isEnabled": true,
-        "note": "品牌名稱大小寫修正"
+        "note": "Web coding runtime 名稱"
     },
     {
-        "id": "00000000-0000-0000-0000-000000000011",
-        "source": "ios",
-        "target": "iOS",
+        "id": "10000000-0000-0000-0000-000000000028",
+        "source": "Tail wind",
+        "target": "Tailwind",
         "isEnabled": true,
-        "note": "品牌名稱大小寫修正"
+        "note": "Web coding CSS 工具"
     },
     {
-        "id": "00000000-0000-0000-0000-000000000012",
-        "source": "Ios",
-        "target": "iOS",
+        "id": "10000000-0000-0000-0000-000000000030",
+        "source": "Vitee",
+        "target": "Vite",
         "isEnabled": true,
-        "note": "品牌名稱大小寫修正"
+        "note": "Web coding build tool"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000031",
+        "source": "Prismaa",
+        "target": "Prisma",
+        "isEnabled": true,
+        "note": "Web coding ORM"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000032",
+        "source": "Postgres SQL",
+        "target": "PostgreSQL",
+        "isEnabled": true,
+        "note": "資料庫名稱"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000033",
+        "source": "Postgres Sequel",
+        "target": "PostgreSQL",
+        "isEnabled": true,
+        "note": "資料庫名稱"
+    },
+    {
+        "id": "10000000-0000-0000-0000-000000000034",
+        "source": "Supabasee",
+        "target": "Supabase",
+        "isEnabled": true,
+        "note": "Web coding backend 服務"
     }
 ]

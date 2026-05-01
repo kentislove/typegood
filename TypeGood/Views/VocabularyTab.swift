@@ -46,8 +46,7 @@ struct VocabularyTab: View {
                     Button("匯入詞彙庫...") { importVocabulary() }
                     Divider()
                     Button("重置為預設", role: .destructive) {
-                        vocabularyStore.library = VocabularyLibrary()
-                        vocabularyStore.save()
+                        vocabularyStore.resetToDefaultVocabulary()
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")

@@ -161,10 +161,10 @@ struct MenuBarView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
                 Spacer()
-                Text("Groq Whisper")
+                Text("\(settingsStore.settings.activeProvider.displayName) Whisper")
                     .font(.caption)
                 Circle()
-                    .fill(settingsStore.apiKey(for: .groq) != nil ? .green : .red)
+                    .fill(settingsStore.apiKey(for: settingsStore.settings.activeProvider) != nil ? .green : .red)
                     .frame(width: 6, height: 6)
             }
             HStack {

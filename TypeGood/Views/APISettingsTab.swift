@@ -13,6 +13,32 @@ struct APISettingsTab: View {
 
     var body: some View {
         Form {
+            Section("語音辨識（STT）") {
+                Picker("供應商", selection: Bindable(settingsStore).settings.activeProvider) {
+                    ForEach(APIProvider.allCases) { provider in
+                        Text(provider.displayName).tag(provider)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                HStack {
+                    Text("目前模型")
+                    Spacer()
+                    Text(settingsStore.settings.activeProvider.modelName)
+                        .foregroundStyle(.secondary)
+                }
+
+                if settingsStore.apiKey(for: settingsStore.settings.activeProvider) == nil {
+                    HStack {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .foregroundStyle(.orange)
+                        Text("請先輸入 \(settingsStore.settings.activeProvider.displayName) API Key 才能使用語音辨識")
+                            .font(.caption)
+                            .foregroundStyle(.orange)
+                    }
+                }
+            }
+
             Section("語音辨識（STT）— Groq") {
                 apiKeyField(
                     key: $groqKey,
@@ -46,7 +72,7 @@ struct APISettingsTab: View {
                 .padding(.vertical, 2)
             }
 
-            Section("語意修正（LLM）— OpenAI") {
+            Section("OpenAI（Whisper / LLM）") {
                 apiKeyField(
                     key: $openaiKey,
                     visible: $openaiKeyVisible,
@@ -54,7 +80,7 @@ struct APISettingsTab: View {
                     placeholder: "sk-..."
                 )
                 HStack {
-                    Text("模型")
+                    Text("LLM 模型")
                     Spacer()
                     Text(settingsStore.settings.llmModelName)
                         .foregroundStyle(.secondary)

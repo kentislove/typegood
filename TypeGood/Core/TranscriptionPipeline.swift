@@ -75,9 +75,10 @@ final class TranscriptionPipeline {
             return
         }
 
-        // 檢查 API Key
-        guard settingsStore.apiKey() != nil else {
-            state = .error("請先設定 API Key")
+        // 檢查語音辨識 API Key
+        let sttProvider = settingsStore.settings.activeProvider
+        guard settingsStore.apiKey(for: sttProvider) != nil else {
+            state = .error("請先設定 \(sttProvider.displayName) API Key")
             return
         }
 
@@ -125,8 +126,9 @@ final class TranscriptionPipeline {
     private func transcribeAndInject(audioData: Data) async {
         do {
             // 1. 呼叫 API 辨識
-            let service = STTServiceFactory.create(for: .groq)
             let settings = settingsStore.settings
+            let sttProvider = settings.activeProvider
+            let service = STTServiceFactory.create(for: sttProvider)
 
             var result = try await service.transcribe(
                 audioData: audioData,
@@ -134,7 +136,7 @@ final class TranscriptionPipeline {
                 prompt: settings.whisperPrompt
             )
 
-            print("[TypeGood] Whisper 原始結果: \(result.rawText)")
+            print("[TypeGood] \(sttProvider.displayName) Whisper 原始結果: \(result.rawText)")
 
             // 2. LLM 語意後處理（使用獨立的 LLM 供應商）
             let llmProvider = settings.llmProvider

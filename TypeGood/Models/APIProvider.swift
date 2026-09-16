@@ -39,8 +39,8 @@ enum APIProvider: String, Codable, CaseIterable, Identifiable {
     /// LLM 預設模型名稱（作為 fallback）
     var defaultLLMModelName: String {
         switch self {
-        case .groq: return "llama-3.3-70b-versatile"
-        case .openai: return "gpt-4.1"
+        case .groq: return "openai/gpt-oss-20b"
+        case .openai: return "gpt-5.4-nano"
         }
     }
 

@@ -132,7 +132,7 @@ protocol STTService {
 在 `SettingsStore.migrateIfNeeded()` 中管理設定遷移：
 
 ```swift
-private static let currentSettingsVersion = 2
+private static let currentSettingsVersion = 5
 
 // v1 → v2: 更新 LLM 系統提示詞
 if storedVersion < 2 {

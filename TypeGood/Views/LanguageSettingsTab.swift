@@ -72,6 +72,17 @@ struct LanguageSettingsTab: View {
                     }
                 }
 
+                // 推理強度：僅部分模型支援，不支援的模型會自動略過此參數
+                Picker("推理強度", selection: Bindable(settingsStore).settings.llmReasoningEffort) {
+                    ForEach(ReasoningEffort.allCases) { effort in
+                        Text(effort.displayName).tag(effort)
+                    }
+                }
+
+                Text("實測建議：gpt-5.4-nano 搭配 low。此任務不需要高階模型，調高推理強度只會變慢，不會更準確。")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
                 if settingsStore.apiKey(for: settingsStore.settings.llmProvider) == nil {
                     HStack {
                         Image(systemName: "exclamationmark.triangle.fill")

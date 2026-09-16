@@ -7,8 +7,8 @@ macOS 語音輸入工具 — 按住右側 ⌘ 說話，自動辨識並輸入文�
 ## 功能
 
 - **語音辨識（STT）**：使用 Groq Whisper 即時將語音轉為文字
-- **語意修正（LLM）**：使用 OpenAI GPT 將口語自動改寫為通順的書面語（預設 gpt-4.1，可自由切換模型）
-- **模型自由切換**：在設定中直接選擇 LLM 模型，支援 GPT-4o / GPT-4.1 / GPT-5 系列等（為求最佳效果，建議使用 GPT-4.1）
+- **語意修正（LLM）**：使用 OpenAI GPT 將口語自動改寫為通順的書面語（預設 gpt-5.4-nano，可自由切換模型）
+- **模型自由切換**：在設定中直接選擇 LLM 模型與推理強度，支援 GPT-4.1 / GPT-5 系列等（實測建議 gpt-5.4-nano + low）
 - **系統級輸入**：辨識結果直接輸入到任何應用程式的游標位置
 - **MenuBar 常駐**：不佔 Dock，安靜地在背景等待使用
 
@@ -60,7 +60,7 @@ TypeGood 需要兩組 API Key：
 - **標點符號風格**：選擇全形或半形標點
 - **中英文自動加空格**：在中文與英文之間自動插入空格，提升可讀性
 - **Whisper 提示詞**：加入常用專有名詞（如公司名、技術術語），幫助 Whisper 提升辨識準確度
-- **LLM 模型選擇**：可從下拉選單切換 LLM 模型（GPT-4o-mini、GPT-4.1、GPT-5 等），切換後即時生效
+- **LLM 模型選擇**：可從下拉選單切換 LLM 模型與推理強度，切換後即時生效
 - **LLM 語意修正**：可開關 LLM 後處理，關閉後直接輸出 Whisper 原始辨識結果
 - **LLM 系統提示詞**：自訂 LLM 的改寫風格，例如調整正式程度或特定領域用語
 
@@ -101,7 +101,7 @@ open TypeGood.xcodeproj
 | 快捷鍵 | CGEvent Tap（右側 ⌘，keyCode 54） |
 | 錄音 | AVFoundation（16kHz, 16-bit, mono WAV） |
 | 語音辨識 | Groq Whisper API（whisper-large-v3-turbo） |
-| 語意修正 | OpenAI Chat Completion API（預設 gpt-4.1，可切換） |
+| 語意修正 | OpenAI Chat Completion API（預設 gpt-5.4-nano，可切換） |
 | 文字輸入 | CGEvent 鍵盤事件模擬 |
 | API Key 儲存 | 檔案式加密儲存（~/Library/Application Support/TypeGood/） |
 

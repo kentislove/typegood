@@ -13,7 +13,7 @@ final class SettingsStore {
         didSet { save() }
     }
 
-    private static let currentSettingsVersion = 4
+    private static let currentSettingsVersion = 5
 
     private init() {
         if let data = defaults.data(forKey: settingsKey),
@@ -56,6 +56,21 @@ final class SettingsStore {
         // v3 → v4: 新增 llmModelName 欄位，從 APIProvider 預設值帶入
         if storedVersion < 4 {
             if settings.llmModelName.isEmpty {
+                settings.llmModelName = settings.llmProvider.defaultLLMModelName
+            }
+        }
+
+        // v4 → v5: 預設模型改為 gpt-5.4-nano，並清掉已下架的舊模型名稱
+        if storedVersion < 5 {
+            let retiredModels = [
+                "gpt-4.1",                    // 世代較舊，成本約為 gpt-5.4-nano 的 9 倍
+                "gpt-4o-mini",
+                "llama-3.3-70b-versatile",    // 以下 Groq 模型均已下架
+                "llama-3.1-8b-instant",
+                "mixtral-8x7b-32768",
+                "gemma2-9b-it",
+            ]
+            if settings.llmModelName.isEmpty || retiredModels.contains(settings.llmModelName) {
                 settings.llmModelName = settings.llmProvider.defaultLLMModelName
             }
         }

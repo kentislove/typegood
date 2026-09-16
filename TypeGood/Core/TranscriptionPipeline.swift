@@ -148,7 +148,8 @@ final class TranscriptionPipeline {
                     provider: llmProvider,
                     apiKey: llmApiKey,
                     systemPrompt: settings.llmSystemPrompt,
-                    modelName: modelName
+                    modelName: modelName,
+                    reasoningEffort: settings.llmReasoningEffort
                 )
                 do {
                     result.processedText = try await llm.process(result.rawText)
